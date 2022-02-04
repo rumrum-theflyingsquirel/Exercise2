@@ -1,9 +1,5 @@
 // API à utiliser pour les images de chiens: https://dog.ceo/api/breeds/image/random
 
-//
-
-
-
 const RandomizerBtn = document.querySelector(".btn-primary")
 const Img = document.getElementById("dogsAPI")
 const Name = document.getElementById("dogName")
@@ -13,36 +9,7 @@ const Registry = document.getElementById("dogRegistry")
 
 const url = 'https://dog.ceo/api/breeds/image/random'
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-console.log(DogAge());
-console.log(DogId());
-console.log(DogName());
-console.log(DogRegistry());
-//console.log(fetchDogImg());
-
-
-
-
-
-
-
-
+//--------------------------------------------------------------------------------------------------//
 
 const fetchDogImg = async () => {
   const response = await fetch(url)
@@ -70,19 +37,20 @@ function DogRegistry () {
     return Math.floor((Math.random() * 9000) + 999)
     };
 
-
-    
-  RandomizerBtn.addEventListener("click", function() {
+//--------------------------------------------------------------------------------------------------//
 
 
-var ImgUrl = Promise.resolve(fetchDogImg());
-ImgUrl.then(function(v) {
+RandomizerBtn.addEventListener("click", function() {
+
+
+  var ImgUrl = Promise.resolve(fetchDogImg());
+  ImgUrl.then(function(v) {
   Img.src = v.message; // 1
-});
+  });
 
-Id.innerText = DogId();
-Name.innerText = DogName();
-Age.innerText = DogAge() + " years";
-Registry.innerText = DogRegistry();
+  Id.innerText = DogId();
+  Name.innerText = DogName();
+  Age.innerText = DogAge() + " years";
+  Registry.innerText = DogRegistry();
   })
 
