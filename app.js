@@ -34,24 +34,21 @@ console.log(DogAge());
 console.log(DogId());
 console.log(DogName());
 console.log(DogRegistry());
-console.log(fetchDogImg());
+//console.log(fetchDogImg());
 
 
 
 
-function fetchDogImg(){
 
-const fetchPromise = fetch(url);
 
-fetchPromise.then(response => {
-  return response.json();
-}).then(lienImg => {
-  const hyperlien = lienImg.map(object => object.message).join("\n");
 
-  console.log(hyperlien)
-})
+
+
+const fetchDogImg = async () => {
+  const response = await fetch(url)
+  const data = await response.json()
+  return data
 }
-
 
 function DogAge () {  
     return Math.floor((Math.random() * 17) + 1)
@@ -77,9 +74,15 @@ function DogRegistry () {
     
   RandomizerBtn.addEventListener("click", function() {
 
-Img.src = fetchDogImg();
+
+var ImgUrl = Promise.resolve(fetchDogImg());
+ImgUrl.then(function(v) {
+  Img.src = v.message; // 1
+});
+
 Id.innerText = DogId();
 Name.innerText = DogName();
 Age.innerText = DogAge() + " years";
 Registry.innerText = DogRegistry();
   })
+
