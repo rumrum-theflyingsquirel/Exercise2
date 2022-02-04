@@ -15,7 +15,7 @@ const fetchDogImg = async () => {
   const response = await fetch(url)
   const data = await response.json()
   return data
-}
+};
 
 function DogAge () {  
     return Math.floor((Math.random() * 17) + 1)
@@ -42,15 +42,13 @@ function DogRegistry () {
 
 RandomizerBtn.addEventListener("click", function() {
 
-
-  var ImgUrl = Promise.resolve(fetchDogImg());
-  ImgUrl.then(function(v) {
-  Img.src = v.message; // 1
-  });
+ fetchDogImg().then(function(v) {
+    Img.src = v.message; 
+    });
 
   Id.innerText = DogId();
   Name.innerText = DogName();
   Age.innerText = DogAge() + " years";
   Registry.innerText = DogRegistry();
-  })
+  });
 
